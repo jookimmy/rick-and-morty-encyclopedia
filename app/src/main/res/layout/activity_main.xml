@@ -8,18 +8,6 @@
 
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="32dp"
-        android:text="Image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
-
-    <Button
         android:id="@+id/button3"
         android:layout_width="125dp"
         android:layout_height="50dp"
@@ -29,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
+        app:layout_constraintVertical_bias="0.826" />
 
     <Button
         android:id="@+id/button2"
@@ -40,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.577" />
+        app:layout_constraintVertical_bias="0.826" />
 
     <Button
         android:id="@+id/button"
@@ -69,13 +57,13 @@
         android:id="@+id/button6"
         android:layout_width="125dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="224dp"
+        android:layout_marginEnd="128dp"
         android:text="Species"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.577" />
+        app:layout_constraintVertical_bias="0.55" />
 
     <EditText
         android:id="@+id/editText"
