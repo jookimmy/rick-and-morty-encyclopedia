@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/gender_button"
         android:layout_width="125dp"
         android:layout_height="50dp"
         android:layout_marginEnd="224dp"
@@ -22,7 +22,7 @@
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/location_button"
         android:layout_width="121dp"
         android:layout_height="50dp"
         android:layout_marginRight="36dp"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.826" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/all_button"
         android:layout_width="125dp"
         android:layout_height="52dp"
         android:layout_marginRight="224dp"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.275" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/status_button"
         android:layout_width="125dp"
         android:layout_height="50dp"
         android:layout_marginEnd="32dp"
@@ -56,7 +56,7 @@
         app:layout_constraintVertical_bias="0.275" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/species_button"
         android:layout_width="125dp"
         android:layout_height="50dp"
         android:layout_marginEnd="128dp"
