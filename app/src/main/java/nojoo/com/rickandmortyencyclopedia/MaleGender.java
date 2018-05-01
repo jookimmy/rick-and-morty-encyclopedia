@@ -1,6 +1,7 @@
 package nojoo.com.rickandmortyencyclopedia;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +42,9 @@ public class MaleGender extends AppCompatActivity implements OnItemClickListener
         setContentView(R.layout.activity_male);
         requestQueue = Volley.newRequestQueue(this);
         GridView gridView = findViewById(R.id.gridview);
+
+        MediaPlayer twobrothers = MediaPlayer.create(MaleGender.this, R.raw.twobrothers);
+        twobrothers.start();
 
         initView();
         for (int i = 1; i <= 17; i++) {

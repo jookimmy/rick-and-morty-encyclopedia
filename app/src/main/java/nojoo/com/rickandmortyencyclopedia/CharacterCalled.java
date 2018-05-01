@@ -49,17 +49,17 @@ public class CharacterCalled extends AppCompatActivity{
                         public void onResponse(final JSONObject response) {
                             try {
                                 Log.d(TAG, response.toString());
-                                String name = response.getString("name");
-                                String status = response.getString("status");
-                                String species = response.getString("species");
-                                String type = response.getString("type");
-                                String gender = response.getString("gender");
+                                String name = "Name: " + response.getString("name");
+                                String status = "Status: " + response.getString("status");
+                                String species = "Species: " + response.getString("species");
+                                String location = "Location: " + response.getJSONObject("location").getString("name");
+                                String gender = "Gender: " + response.getString("gender");
                                 String imgurl = response.getString("image");
                                 ((TextView) findViewById(R.id.name)).setText(name);
                                 ((TextView) findViewById(R.id.status)).setText(status);
                                 ((TextView) findViewById(R.id.species)).setText(species);
-                                ((TextView) findViewById(R.id.type)).setText(type);
-                                ((TextView) findViewById(R.id.type)).setText(gender);
+                                ((TextView) findViewById(R.id.location)).setText(location);
+                                ((TextView) findViewById(R.id.gender)).setText(gender);
                                 Picasso.get().load(imgurl).into((ImageView) findViewById(R.id.charImage));
                             } catch (JSONException ignored) { }
                         }

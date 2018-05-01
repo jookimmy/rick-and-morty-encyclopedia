@@ -1,6 +1,7 @@
 package nojoo.com.rickandmortyencyclopedia;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -34,6 +35,10 @@ public class AliveStatus extends AppCompatActivity implements AdapterView.OnItem
         setContentView(R.layout.activity_alive);
         requestQueue = Volley.newRequestQueue(this);
         GridView gridView = findViewById(R.id.gridview);
+
+        MediaPlayer schwifty = MediaPlayer.create(AliveStatus.this, R.raw.youtube);
+        schwifty.start();
+
 
         initView();
         for (int i = 1; i <= 20; i++) {

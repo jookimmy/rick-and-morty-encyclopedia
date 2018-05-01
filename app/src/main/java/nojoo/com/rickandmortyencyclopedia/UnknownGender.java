@@ -1,6 +1,7 @@
 package nojoo.com.rickandmortyencyclopedia;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +36,10 @@ public class UnknownGender extends AppCompatActivity implements AdapterView.OnIt
         setContentView(R.layout.activity_unknown_g);
         requestQueue = Volley.newRequestQueue(this);
         GridView gridView = findViewById(R.id.gridview);
+
+        MediaPlayer meeseks = MediaPlayer.create(UnknownGender.this, R.raw.meeseks);
+        meeseks.start();
+
 
         initView();
         for (int i = 1; i <= 10; i++) {

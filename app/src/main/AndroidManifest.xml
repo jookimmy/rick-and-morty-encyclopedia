@@ -21,16 +21,10 @@
         <activity android:name="AllActivity"
             android:label="@string/app_name">
         </activity>
-        <activity android:name="LocationActivity"
-            android:label="@string/app_name">
-        </activity>
         <activity android:name="StatusActivity"
             android:label="@string/app_name">
         </activity>
         <activity android:name="GenderActivity"
-            android:label="@string/app_name">
-        </activity>
-        <activity android:name="SpeciesActivity"
             android:label="@string/app_name">
         </activity>
         <activity android:name=".MaleGender"

@@ -1,6 +1,7 @@
 package nojoo.com.rickandmortyencyclopedia;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +36,10 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
         super.onCreate(savedInstanceState);
         requestQueue = Volley.newRequestQueue(this);
         setContentView(R.layout.activity_all);
+
+        MediaPlayer schwifty = MediaPlayer.create(AllActivity.this, R.raw.whatyougot);
+        schwifty.start();
+
 
         initView();
         fillData();

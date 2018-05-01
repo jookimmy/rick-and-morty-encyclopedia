@@ -1,6 +1,7 @@
 package nojoo.com.rickandmortyencyclopedia;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        MediaPlayer schwifty = MediaPlayer.create(MainActivity.this, R.raw.schwifty);
+        schwifty.start();
+
         Button btn = findViewById(R.id.all_button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,13 +36,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn2 = findViewById(R.id.location_button);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v2) {
-                startActivity(new Intent(MainActivity.this, LocationActivity.class));
-            }
-        });
 
         Button btn3 = findViewById(R.id.gender_button);
         btn3.setOnClickListener(new View.OnClickListener() {
@@ -56,12 +53,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn5 = findViewById(R.id.species_button);
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v5) {
-                startActivity(new Intent(MainActivity.this, SpeciesActivity.class));
-            }
-        });
     }
 }
