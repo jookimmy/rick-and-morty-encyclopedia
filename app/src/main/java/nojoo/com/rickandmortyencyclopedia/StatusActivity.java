@@ -11,7 +11,7 @@ public class StatusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
-        Button btn = findViewById(R.id.male_button);
+        Button btn = findViewById(R.id.alive_button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -19,7 +19,7 @@ public class StatusActivity extends AppCompatActivity {
             }
         });
 
-        Button btn2 = findViewById(R.id.female_button);
+        Button btn2 = findViewById(R.id.dead_button);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v2) {
@@ -27,7 +27,7 @@ public class StatusActivity extends AppCompatActivity {
             }
         });
 
-        Button btn3 = findViewById(R.id.unknowng_button);
+        Button btn3 = findViewById(R.id.notKnown_button);
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v3) {

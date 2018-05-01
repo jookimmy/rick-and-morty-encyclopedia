@@ -54,8 +54,8 @@ public class FemaleGender extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id) {
+        startActivity(new Intent(FemaleGender.this, CharacterCalled.class));
     }
-
 
     void startAPICall(int page) {
         try {
