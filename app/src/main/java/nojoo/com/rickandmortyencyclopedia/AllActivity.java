@@ -56,33 +56,34 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
         gridView.setOnItemClickListener(this);
     }
     private void fillData() {
-        for (int i = 1; i <= 5; i++) {
-            startAPICall(Integer.toString(i));
+        for (int i = 1; i <= 436; i++) {
+            startAPICall(i);
         }
     }
 
     public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id)
     {
     }
-    void startAPICall(final String page) {
+    void startAPICall(int id) {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
-                    "https://rickandmortyapi.com/api/character/?page=" + page,
+                    "https://rickandmortyapi.com/api/character/" + id,
                     null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(final JSONObject response) {
                             try {
-                                JSONArray results = response.getJSONArray("results");
+                                data.add(new Item(response.getString("name"), getDrawable(R.drawable.ic_launcher_background)));
+                                /*JSONArray results = response.getJSONArray("results");
                                 for (int i = 0; i < results.length(); i++) {
                                     name.add(results.getJSONObject(i).getString("name"));
                                     imgurl.add(results.getJSONObject(i).getString("image"));
-                                }
+                                }*/
                             } catch (JSONException ignored) { }
-                            for (int i = 0; i < name.size(); i++) {
+                            /*for (int i = 0; i < name.size(); i++) {
                                 data.add(new Item(name.get(i), getDrawable(R.drawable.ic_launcher_background)));
-                            }
+                            }*/
                             setDataAdapter();
                             Log.d(TAG, data.toString());
                         }
