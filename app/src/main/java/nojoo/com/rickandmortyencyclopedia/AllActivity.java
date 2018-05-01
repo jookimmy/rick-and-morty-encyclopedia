@@ -33,8 +33,6 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
     private static RequestQueue requestQueue;
     GridView gridView;
     CharactersAdapter charactersAdapter;
-    ArrayList<String> name = new ArrayList<String>();
-    ArrayList<String> imgurl = new ArrayList<String>();
     ArrayList<Item> data = new ArrayList<Item>();
 
     @Override

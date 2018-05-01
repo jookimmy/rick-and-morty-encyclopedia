@@ -5,8 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,29 +15,46 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class MaleGender extends AppCompatActivity {
+public class MaleGender extends AppCompatActivity implements OnItemClickListener {
     private static final String TAG = "MaleGender";
     private static RequestQueue requestQueue;
-    ArrayList<String> name = new ArrayList<>();
-    ArrayList<String> imgurl = new ArrayList<>();
-    ArrayList<String> status = new ArrayList<>();
-    ArrayList<String> species = new ArrayList<>();
-    ArrayList<String> gender = new ArrayList<>();
+    GridView gridView;
+    CharactersAdapter charactersAdapter;
+    ArrayList<Item> data = new ArrayList<Item>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_male);
         requestQueue = Volley.newRequestQueue(this);
-        startAPICall();
+        GridView gridView = findViewById(R.id.gridview);
 
+        initView();
+        startAPICall();
+    }
+    private void setDataAdapter() {
+        charactersAdapter = new CharactersAdapter(this, R.layout.item_gridview, data);
+        gridView.setAdapter(charactersAdapter);
+    }
+    private void initView() {
+        gridView = (GridView)findViewById(R.id.grid_male);
+        gridView.setOnItemClickListener(this);
+    }
+
+    public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id)
+    {
     }
     void startAPICall() {
         try {
@@ -50,14 +68,10 @@ public class MaleGender extends AppCompatActivity {
                             try {
                                 JSONArray results = response.getJSONArray("results");
                                 for (int i = 0; i < results.length(); i++) {
-                                    name.add(results.getJSONObject(i).getString("name"));
-                                    status.add(results.getJSONObject(i).getString("status"));
-                                    species.add(results.getJSONObject(i).getString("species"));
-                                    gender.add(results.getJSONObject(i).getString("gender"));
-                                    imgurl.add(results.getJSONObject(i).getString("image"));
-
+                                    data.add(new Item(results.getJSONObject(i).getString("name"), getDrawable(R.drawable.ic_launcher_background)));
                                 }
-                                Log.d(TAG, response.toString());
+                                setDataAdapter();
+                                Log.d(TAG, data.toString());
                             } catch (JSONException ignored) { }
                         }
                     }, new Response.ErrorListener() {
