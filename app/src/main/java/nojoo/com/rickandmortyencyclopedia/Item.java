@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable;
 public class Item
 {
     String title;
-    Drawable image;
+    String imgurl;
 
     // Empty Constructor
     public Item()
@@ -14,11 +14,11 @@ public class Item
     }
 
     // Constructor
-    public Item(String title, Drawable image)
+    public Item(String title, String imgurl)
     {
         super();
         this.title = title;
-        this.image = image;
+        this.imgurl = imgurl;
     }
 
     // Getter and Setter Method
@@ -32,14 +32,14 @@ public class Item
         this.title = title;
     }
 
-    public Drawable getImage()
+    public String getImage()
     {
-        return image;
+        return imgurl;
     }
 
-    public void setImage(Drawable image)
+    public void setImage(String imgurl)
     {
-        this.image = image;
+        this.imgurl = imgurl;
     }
 
 

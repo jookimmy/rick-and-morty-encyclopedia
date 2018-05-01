@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.squareup.picasso.*;
 
 public class CharactersAdapter extends ArrayAdapter<Item>
 {
@@ -47,7 +48,8 @@ public class CharactersAdapter extends ArrayAdapter<Item>
         }
 
         Item item = getItem(position);
-        holder.imgItem.setImageDrawable(item.getImage());
+        //holder.imgItem.setImageDrawable(item.getImage());
+        Picasso.get().load(item.getImage()).into(holder.imgItem);
         holder.txtItem.setText(item.getTitle());
 
         return itemView;

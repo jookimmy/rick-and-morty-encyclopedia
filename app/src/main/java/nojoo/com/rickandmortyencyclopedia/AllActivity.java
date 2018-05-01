@@ -72,7 +72,7 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
                         @Override
                         public void onResponse(final JSONObject response) {
                             try {
-                                data.add(new Item(response.getString("name"), getDrawable(R.drawable.ic_launcher_background)));
+                                data.add(new Item(response.getString("name"), response.getString("image")));
                                 /*JSONArray results = response.getJSONArray("results");
                                 for (int i = 0; i < results.length(); i++) {
                                     name.add(results.getJSONObject(i).getString("name"));
