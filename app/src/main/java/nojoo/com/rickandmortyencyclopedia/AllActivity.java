@@ -44,12 +44,8 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
         setContentView(R.layout.activity_all);
         GridView gridView = findViewById(R.id.gridview);
 
-        for (int i = 1; i <= 5; i++) {
-            startAPICall(Integer.toString(i));
-        }
         initView();
         fillData();
-        setDataAdapter();
     }
     private void setDataAdapter() {
         charactersAdapter = new CharactersAdapter(this, R.layout.item_gridview, data);
@@ -62,9 +58,6 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
     private void fillData() {
         for (int i = 1; i <= 5; i++) {
             startAPICall(Integer.toString(i));
-        }
-        for (int i = 0; i < name.size(); i++) {
-            data.add(new Item(name.get(i), getDrawable(R.drawable.ic_launcher_background)));
         }
     }
 
@@ -86,8 +79,12 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
                                     name.add(results.getJSONObject(i).getString("name"));
                                     imgurl.add(results.getJSONObject(i).getString("image"));
                                 }
-                                Log.d(TAG, response.toString());
                             } catch (JSONException ignored) { }
+                            for (int i = 0; i < name.size(); i++) {
+                                data.add(new Item(name.get(i), getDrawable(R.drawable.ic_launcher_background)));
+                            }
+                            setDataAdapter();
+                            Log.d(TAG, data.toString());
                         }
                     }, new Response.ErrorListener() {
                 @Override
