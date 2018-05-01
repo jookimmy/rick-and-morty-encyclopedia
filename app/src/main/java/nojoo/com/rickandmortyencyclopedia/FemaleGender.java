@@ -69,7 +69,8 @@ public class FemaleGender extends AppCompatActivity implements AdapterView.OnIte
                             try {
                                 JSONArray results = response.getJSONArray("results");
                                 for (int j = 0; j < results.length(); j++) {
-                                    data.add(new Item(results.getJSONObject(j).getString("name"), getDrawable(R.drawable.ic_launcher_background)));
+                                    data.add(new Item(results.getJSONObject(j).getString("name"),
+                                            results.getJSONObject(j).getString("image")));
                                 }
                                 setDataAdapter();
                                 Log.d(TAG, data.toString());

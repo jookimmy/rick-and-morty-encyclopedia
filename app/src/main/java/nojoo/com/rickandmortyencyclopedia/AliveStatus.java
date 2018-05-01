@@ -1,12 +1,11 @@
 package nojoo.com.rickandmortyencyclopedia;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.android.volley.Request;
@@ -15,12 +14,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,8 +21,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MaleGender extends AppCompatActivity implements OnItemClickListener {
-    private static final String TAG = "MaleGender";
+public class AliveStatus extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    private static final String TAG = "AliveStatus";
     private static RequestQueue requestQueue;
     GridView gridView;
     CharactersAdapter charactersAdapter;
@@ -37,12 +30,12 @@ public class MaleGender extends AppCompatActivity implements OnItemClickListener
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_male);
+        setContentView(R.layout.activity_alive);
         requestQueue = Volley.newRequestQueue(this);
         GridView gridView = findViewById(R.id.gridview);
 
         initView();
-        for (int i = 1; i <= 17; i++) {
+        for (int i = 1; i <= 20; i++) {
             startAPICall(i);
 
         }
@@ -54,12 +47,12 @@ public class MaleGender extends AppCompatActivity implements OnItemClickListener
     }
 
     private void initView() {
-        gridView = (GridView) findViewById(R.id.grid_male);
+        gridView = (GridView) findViewById(R.id.grid_alive);
         gridView.setOnItemClickListener(this);
     }
 
     public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id) {
-        startActivity(new Intent(MaleGender.this, CharacterCalled.class));
+        startActivity(new Intent(AliveStatus.this, CharacterCalled.class));
     }
 
 
@@ -67,7 +60,7 @@ public class MaleGender extends AppCompatActivity implements OnItemClickListener
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
-                    "https://rickandmortyapi.com/api/character/?page=" + Integer.toString(page) + "&gender=male",
+                    "https://rickandmortyapi.com/api/character/?page=" + Integer.toString(page) + "&status=alive",
                     null,
                     new Response.Listener<JSONObject>() {
                         @Override

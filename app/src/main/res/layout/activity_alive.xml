@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <GridView
-        android:id="@+id/grid_unknowng"
+        android:id="@+id/grid_alive"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:columnWidth="100dp"
@@ -12,5 +12,4 @@
         android:horizontalSpacing="10dp"
         android:numColumns="auto_fit"
         android:verticalSpacing="24dp" />
-
 </android.support.constraint.ConstraintLayout>

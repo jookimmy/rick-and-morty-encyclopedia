@@ -7,10 +7,33 @@ import android.view.View;
 import android.widget.Button;
 
 public class StatusActivity extends AppCompatActivity {
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
-    }
+        Button btn = findViewById(R.id.male_button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StatusActivity.this, MaleGender.class));
+            }
+        });
 
+        Button btn2 = findViewById(R.id.female_button);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v2) {
+                startActivity(new Intent(StatusActivity.this, FemaleGender.class));
+            }
+        });
+
+        Button btn3 = findViewById(R.id.unknowng_button);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v3) {
+                startActivity(new Intent(StatusActivity.this, UnknownGender.class));
+            }
+        });
+    }
 
 }
