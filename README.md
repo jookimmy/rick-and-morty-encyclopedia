@@ -2,6 +2,10 @@
 
 An Encyclopedia/Glossary of all known Rick and Morty Characters using an API which gives their information.
 
+Cool sound effects/Wallpapers
+
+Implementing 12 activities and layout xmls
+
 Used JSON/Java/AndroidStudio
 
 The following apis and (additional) dependencies were implemented:
