@@ -6,6 +6,7 @@ public class Item
 {
     String title;
     String imgurl;
+    String id;
 
     // Empty Constructor
     public Item()
@@ -14,11 +15,12 @@ public class Item
     }
 
     // Constructor
-    public Item(String title, String imgurl)
+    public Item(String title, String imgurl, String id)
     {
         super();
         this.title = title;
         this.imgurl = imgurl;
+        this.id = id;
     }
 
     // Getter and Setter Method
@@ -40,6 +42,12 @@ public class Item
     public void setImage(String imgurl)
     {
         this.imgurl = imgurl;
+    }
+    public void setID(String id) {
+        this.id = id;
+    }
+    public String getID() {
+        return this.id;
     }
 
 

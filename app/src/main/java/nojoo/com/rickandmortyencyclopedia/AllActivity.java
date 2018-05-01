@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,12 +16,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +35,6 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
         super.onCreate(savedInstanceState);
         requestQueue = Volley.newRequestQueue(this);
         setContentView(R.layout.activity_all);
-        GridView gridView = findViewById(R.id.gridview);
 
         initView();
         fillData();
@@ -61,8 +55,12 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
 
     public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id)
     {
+        String charID = ((TextView) view.findViewById(R.id.item_id)).getText().toString();
+        Intent intent = new Intent(getBaseContext(), CharacterCalled.class);
+        intent.putExtra("CHAR_ID", charID);
+        startActivity(intent);
     }
-    void startAPICall(int id) {
+    private void startAPICall(int id) {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
@@ -72,18 +70,9 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
                         @Override
                         public void onResponse(final JSONObject response) {
                             try {
-                                data.add(new Item(response.getString("name"), response.getString("image")));
-                                /*JSONArray results = response.getJSONArray("results");
-                                for (int i = 0; i < results.length(); i++) {
-                                    name.add(results.getJSONObject(i).getString("name"));
-                                    imgurl.add(results.getJSONObject(i).getString("image"));
-                                }*/
+                                data.add(new Item(response.getString("name"), response.getString("image"), response.getString("id")));
                             } catch (JSONException ignored) { }
-                            /*for (int i = 0; i < name.size(); i++) {
-                                data.add(new Item(name.get(i), getDrawable(R.drawable.ic_launcher_background)));
-                            }*/
                             setDataAdapter();
-                            Log.d(TAG, data.toString());
                         }
                     }, new Response.ErrorListener() {
                 @Override

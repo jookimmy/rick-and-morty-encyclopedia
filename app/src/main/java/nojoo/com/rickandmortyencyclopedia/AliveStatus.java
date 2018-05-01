@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -69,7 +70,7 @@ public class AliveStatus extends AppCompatActivity implements AdapterView.OnItem
                                 JSONArray results = response.getJSONArray("results");
                                 for (int j = 0; j < results.length(); j++) {
                                     data.add(new Item(results.getJSONObject(j).getString("name"),
-                                            results.getJSONObject(j).getString("image")));
+                                            results.getJSONObject(j).getString("image"), results.getJSONObject(j).getString("id")));
                                 }
                                 setDataAdapter();
                                 Log.d(TAG, data.toString());

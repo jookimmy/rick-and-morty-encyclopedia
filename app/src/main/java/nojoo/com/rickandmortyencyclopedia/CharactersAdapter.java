@@ -40,6 +40,7 @@ public class CharactersAdapter extends ArrayAdapter<Item>
             holder = new ViewHolder();
             holder.imgItem = (ImageView) itemView.findViewById(R.id.imgItem);
             holder.txtItem = (TextView) itemView.findViewById(R.id.txtItem);
+            holder.item_id= (TextView) itemView.findViewById(R.id.item_id);
             itemView.setTag(holder);
         }
         else
@@ -48,9 +49,9 @@ public class CharactersAdapter extends ArrayAdapter<Item>
         }
 
         Item item = getItem(position);
-        //holder.imgItem.setImageDrawable(item.getImage());
         Picasso.get().load(item.getImage()).into(holder.imgItem);
         holder.txtItem.setText(item.getTitle());
+        holder.item_id.setText(item.getID());
 
         return itemView;
     }
@@ -59,6 +60,7 @@ public class CharactersAdapter extends ArrayAdapter<Item>
     {
         ImageView imgItem;
         TextView txtItem;
+        TextView item_id;
     }
 
 }
