@@ -11,10 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.*;
 
-public class CharactersAdapter extends ArrayAdapter<Item>
-{
-    Context mContext;
-    int resourceId;
+public class CharactersAdapter extends ArrayAdapter<Item> {
+    private Context mContext;
+    private int resourceId;
     ArrayList<Item> data;
 
     public CharactersAdapter(Context context, int layoutResourceId, ArrayList<Item> data)

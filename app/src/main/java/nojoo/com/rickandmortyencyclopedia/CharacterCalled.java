@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class CharacterCalled extends AppCompatActivity{
-    private static final String TAG = "AllActivity";
+    private static final String TAG = "Character Called";
     private static RequestQueue requestQueue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
