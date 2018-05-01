@@ -23,13 +23,13 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MaleGender extends AppCompatActivity {
-    private static final String TAG = "GenderActivity";
+    private static final String TAG = "MaleGender";
     private static RequestQueue requestQueue;
-    CharactersAdapter charactersAdapter;
     ArrayList<String> name = new ArrayList<>();
     ArrayList<String> imgurl = new ArrayList<>();
     ArrayList<String> status = new ArrayList<>();
     ArrayList<String> species = new ArrayList<>();
+    ArrayList<String> gender = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +53,7 @@ public class MaleGender extends AppCompatActivity {
                                     name.add(results.getJSONObject(i).getString("name"));
                                     status.add(results.getJSONObject(i).getString("status"));
                                     species.add(results.getJSONObject(i).getString("species"));
+                                    gender.add(results.getJSONObject(i).getString("gender"));
                                     imgurl.add(results.getJSONObject(i).getString("image"));
 
                                 }

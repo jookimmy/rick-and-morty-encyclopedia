@@ -15,13 +15,57 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class FemaleGender extends AppCompatActivity {
+    private static final String TAG = "FemaleGender";
+    private static RequestQueue requestQueue;
+    ArrayList<String> name = new ArrayList<>();
+    ArrayList<String> imgurl = new ArrayList<>();
+    ArrayList<String> status = new ArrayList<>();
+    ArrayList<String> species = new ArrayList<>();
+    ArrayList<String> gender = new ArrayList<>();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female);
+        startAPICall();
+    }
+    void startAPICall() {
+        try {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.GET,
+                    "https://rickandmortyapi.com/api/character/?gender=female",
+                    null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(final JSONObject response) {
+                            try {
+                                JSONArray results = response.getJSONArray("results");
+                                for (int i = 0; i < results.length(); i++) {
+                                    name.add(results.getJSONObject(i).getString("name"));
+                                    status.add(results.getJSONObject(i).getString("status"));
+                                    species.add(results.getJSONObject(i).getString("species"));
+                                    gender.add(results.getJSONObject(i).getString("gender"));
+                                    imgurl.add(results.getJSONObject(i).getString("image"));
 
+                                }
+                                Log.d(TAG, response.toString());
+                            } catch (JSONException ignored) { }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(final VolleyError error) {
+                    Log.e(TAG, error.toString());
+                }
+            });
+            requestQueue.add(jsonObjectRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
