@@ -60,6 +60,7 @@ public class MaleGender extends AppCompatActivity implements OnItemClickListener
     }
 
     public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id) {
+        startActivity(new Intent(MaleGender.this, CharacterCalled.class));
     }
 
 

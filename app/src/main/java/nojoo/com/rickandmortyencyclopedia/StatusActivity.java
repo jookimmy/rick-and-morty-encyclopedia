@@ -15,7 +15,7 @@ public class StatusActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StatusActivity.this, MaleGender.class));
+                startActivity(new Intent(StatusActivity.this, AliveStatus.class));
             }
         });
 
@@ -23,7 +23,7 @@ public class StatusActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v2) {
-                startActivity(new Intent(StatusActivity.this, FemaleGender.class));
+                startActivity(new Intent(StatusActivity.this, DeadStatus.class));
             }
         });
 
@@ -31,7 +31,7 @@ public class StatusActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v3) {
-                startActivity(new Intent(StatusActivity.this, UnknownGender.class));
+                startActivity(new Intent(StatusActivity.this, UnknownStatus.class));
             }
         });
     }
