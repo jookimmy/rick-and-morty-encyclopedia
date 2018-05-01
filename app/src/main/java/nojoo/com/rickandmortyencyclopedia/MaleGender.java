@@ -42,37 +42,44 @@ public class MaleGender extends AppCompatActivity implements OnItemClickListener
         GridView gridView = findViewById(R.id.gridview);
 
         initView();
-        startAPICall();
+        for (int i = 1; i <= 17; i++) {
+            startAPICall(i);
+
+        }
     }
+
     private void setDataAdapter() {
         charactersAdapter = new CharactersAdapter(this, R.layout.item_gridview, data);
         gridView.setAdapter(charactersAdapter);
     }
+
     private void initView() {
-        gridView = (GridView)findViewById(R.id.grid_male);
+        gridView = (GridView) findViewById(R.id.grid_male);
         gridView.setOnItemClickListener(this);
     }
 
-    public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id)
-    {
+    public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id) {
     }
-    void startAPICall() {
+
+
+    void startAPICall(int page) {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
-                    "https://rickandmortyapi.com/api/character/?gender=male",
+                    "https://rickandmortyapi.com/api/character/?page=" + Integer.toString(page) + "&gender=male",
                     null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(final JSONObject response) {
                             try {
                                 JSONArray results = response.getJSONArray("results");
-                                for (int i = 0; i < results.length(); i++) {
-                                    data.add(new Item(results.getJSONObject(i).getString("name"), getDrawable(R.drawable.ic_launcher_background)));
+                                for (int j = 0; j < results.length(); j++) {
+                                    data.add(new Item(results.getJSONObject(j).getString("name"), getDrawable(R.drawable.ic_launcher_background)));
                                 }
                                 setDataAdapter();
                                 Log.d(TAG, data.toString());
-                            } catch (JSONException ignored) { }
+                            } catch (JSONException ignored) {
+                            }
                         }
                     }, new Response.ErrorListener() {
                 @Override

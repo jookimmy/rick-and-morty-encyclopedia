@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -21,41 +23,58 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class FemaleGender extends AppCompatActivity {
+public class FemaleGender extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private static final String TAG = "FemaleGender";
     private static RequestQueue requestQueue;
-    ArrayList<String> name = new ArrayList<>();
-    ArrayList<String> imgurl = new ArrayList<>();
-    ArrayList<String> status = new ArrayList<>();
-    ArrayList<String> species = new ArrayList<>();
-    ArrayList<String> gender = new ArrayList<>();
+    GridView gridView;
+    CharactersAdapter charactersAdapter;
+    ArrayList<Item> data = new ArrayList<Item>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female);
-        startAPICall();
+        requestQueue = Volley.newRequestQueue(this);
+        GridView gridView = findViewById(R.id.gridview);
+
+        initView();
+        for (int i = 1; i <= 10; i++) {
+            startAPICall(i);
+
+        }
     }
-    void startAPICall() {
+
+    private void setDataAdapter() {
+        charactersAdapter = new CharactersAdapter(this, R.layout.item_gridview, data);
+        gridView.setAdapter(charactersAdapter);
+    }
+
+    private void initView() {
+        gridView = (GridView) findViewById(R.id.grid_female);
+        gridView.setOnItemClickListener(this);
+    }
+
+    public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id) {
+    }
+
+
+    void startAPICall(int page) {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
-                    "https://rickandmortyapi.com/api/character/?gender=female",
+                    "https://rickandmortyapi.com/api/character/?page=" + Integer.toString(page) + "&gender=female",
                     null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(final JSONObject response) {
                             try {
                                 JSONArray results = response.getJSONArray("results");
-                                for (int i = 0; i < results.length(); i++) {
-                                    name.add(results.getJSONObject(i).getString("name"));
-                                    status.add(results.getJSONObject(i).getString("status"));
-                                    species.add(results.getJSONObject(i).getString("species"));
-                                    gender.add(results.getJSONObject(i).getString("gender"));
-                                    imgurl.add(results.getJSONObject(i).getString("image"));
-
+                                for (int j = 0; j < results.length(); j++) {
+                                    data.add(new Item(results.getJSONObject(j).getString("name"), getDrawable(R.drawable.ic_launcher_background)));
                                 }
-                                Log.d(TAG, response.toString());
-                            } catch (JSONException ignored) { }
+                                setDataAdapter();
+                                Log.d(TAG, data.toString());
+                            } catch (JSONException ignored) {
+                            }
                         }
                     }, new Response.ErrorListener() {
                 @Override
