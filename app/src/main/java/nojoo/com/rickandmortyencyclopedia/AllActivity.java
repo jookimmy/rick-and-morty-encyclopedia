@@ -56,9 +56,7 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
     public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id)
     {
         String charID = ((TextView) view.findViewById(R.id.item_id)).getText().toString();
-        Intent intent = new Intent(getBaseContext(), CharacterCalled.class);
-        intent.putExtra("CHAR_ID", charID);
-        startActivity(intent);
+        startActivity(new Intent(AllActivity.this, CharacterCalled.class).putExtra("CHAR_ID", charID));
     }
     private void startAPICall(int id) {
         try {

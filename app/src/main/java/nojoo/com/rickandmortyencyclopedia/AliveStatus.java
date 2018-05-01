@@ -52,10 +52,11 @@ public class AliveStatus extends AppCompatActivity implements AdapterView.OnItem
         gridView.setOnItemClickListener(this);
     }
 
-    public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id) {
-        startActivity(new Intent(AliveStatus.this, CharacterCalled.class));
+    public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id)
+    {
+        String charID = ((TextView) view.findViewById(R.id.item_id)).getText().toString();
+        startActivity(new Intent(AliveStatus.this, CharacterCalled.class).putExtra("CHAR_ID", charID));
     }
-
 
     void startAPICall(int page) {
         try {

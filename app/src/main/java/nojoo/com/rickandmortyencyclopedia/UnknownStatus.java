@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -51,8 +52,10 @@ public class UnknownStatus extends AppCompatActivity implements AdapterView.OnIt
         gridView.setOnItemClickListener(this);
     }
 
-    public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id) {
-        startActivity(new Intent(UnknownStatus.this, CharacterCalled.class));
+    public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id)
+    {
+        String charID = ((TextView) view.findViewById(R.id.item_id)).getText().toString();
+        startActivity(new Intent(UnknownStatus.this, CharacterCalled.class).putExtra("CHAR_ID", charID));
     }
 
 
