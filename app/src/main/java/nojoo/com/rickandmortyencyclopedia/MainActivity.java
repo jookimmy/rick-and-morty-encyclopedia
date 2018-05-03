@@ -2,6 +2,7 @@ package nojoo.com.rickandmortyencyclopedia;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         MediaPlayer schwifty = MediaPlayer.create(MainActivity.this, R.raw.schwifty);
         schwifty.start();
