@@ -43,8 +43,7 @@ public class MaleGender extends AppCompatActivity implements OnItemClickListener
         requestQueue = Volley.newRequestQueue(this);
         GridView gridView = findViewById(R.id.gridview);
 
-        MediaPlayer twobrothers = MediaPlayer.create(MaleGender.this, R.raw.twobrothers);
-        twobrothers.start();
+
 
         initView();
         for (int i = 1; i <= 17; i++) {

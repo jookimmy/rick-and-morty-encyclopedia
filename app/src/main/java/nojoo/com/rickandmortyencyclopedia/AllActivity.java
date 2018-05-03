@@ -37,9 +37,6 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
         requestQueue = Volley.newRequestQueue(this);
         setContentView(R.layout.activity_all);
 
-        MediaPlayer schwifty = MediaPlayer.create(AllActivity.this, R.raw.whatyougot);
-        schwifty.start();
-
 
         initView();
         fillData();

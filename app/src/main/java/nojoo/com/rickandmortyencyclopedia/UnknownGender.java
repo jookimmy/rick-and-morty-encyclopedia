@@ -37,9 +37,6 @@ public class UnknownGender extends AppCompatActivity implements AdapterView.OnIt
         requestQueue = Volley.newRequestQueue(this);
         GridView gridView = findViewById(R.id.gridview);
 
-        MediaPlayer meeseks = MediaPlayer.create(UnknownGender.this, R.raw.meeseks);
-        meeseks.start();
-
 
         initView();
         for (int i = 1; i <= 10; i++) {

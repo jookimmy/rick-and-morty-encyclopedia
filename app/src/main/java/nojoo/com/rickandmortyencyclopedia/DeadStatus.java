@@ -36,9 +36,6 @@ public class DeadStatus extends AppCompatActivity implements AdapterView.OnItemC
         requestQueue = Volley.newRequestQueue(this);
         GridView gridView = findViewById(R.id.gridview);
 
-        MediaPlayer schwifty = MediaPlayer.create(DeadStatus.this, R.raw.wubba);
-        schwifty.start();
-
 
         initView();
         for (int i = 1; i <= 20; i++) {

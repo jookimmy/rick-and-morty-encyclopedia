@@ -36,8 +36,6 @@ public class AliveStatus extends AppCompatActivity implements AdapterView.OnItem
         requestQueue = Volley.newRequestQueue(this);
         GridView gridView = findViewById(R.id.gridview);
 
-        MediaPlayer schwifty = MediaPlayer.create(AliveStatus.this, R.raw.youtube);
-        schwifty.start();
 
 
         initView();
