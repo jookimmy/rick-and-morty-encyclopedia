@@ -1,6 +1,7 @@
 package nojoo.com.rickandmortyencyclopedia;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,8 @@ public class StatusActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StatusActivity.this, AliveStatus.class));
+                MediaPlayer schwifty = MediaPlayer.create(StatusActivity.this, R.raw.button);
+                schwifty.start();
             }
         });
 
@@ -24,6 +27,8 @@ public class StatusActivity extends AppCompatActivity {
             @Override
             public void onClick(View v2) {
                 startActivity(new Intent(StatusActivity.this, DeadStatus.class));
+                MediaPlayer schwifty = MediaPlayer.create(StatusActivity.this, R.raw.button);
+                schwifty.start();
             }
         });
 
@@ -32,6 +37,8 @@ public class StatusActivity extends AppCompatActivity {
             @Override
             public void onClick(View v3) {
                 startActivity(new Intent(StatusActivity.this, UnknownStatus.class));
+                MediaPlayer schwifty = MediaPlayer.create(StatusActivity.this, R.raw.button);
+                schwifty.start();
             }
         });
     }

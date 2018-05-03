@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         MediaPlayer schwifty = MediaPlayer.create(MainActivity.this, R.raw.schwifty);
         schwifty.start();
 
@@ -35,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, AllActivity.class));
+                MediaPlayer schwifty = MediaPlayer.create(MainActivity.this, R.raw.button);
+                schwifty.start();
             }
         });
 
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v3) {
                 startActivity(new Intent(MainActivity.this, GenderActivity.class));
+                MediaPlayer schwifty = MediaPlayer.create(MainActivity.this, R.raw.button);
+                schwifty.start();
             }
         });
 
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v4) {
                 startActivity(new Intent(MainActivity.this, StatusActivity.class));
+                MediaPlayer schwifty = MediaPlayer.create(MainActivity.this, R.raw.button);
+                schwifty.start();
             }
         });
 

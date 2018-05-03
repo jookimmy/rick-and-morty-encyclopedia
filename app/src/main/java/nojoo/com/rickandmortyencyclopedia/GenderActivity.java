@@ -1,6 +1,7 @@
 package nojoo.com.rickandmortyencyclopedia;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,8 @@ public class GenderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(GenderActivity.this, MaleGender.class));
+                MediaPlayer schwifty = MediaPlayer.create(GenderActivity.this, R.raw.button);
+                schwifty.start();
             }
         });
 
@@ -40,6 +43,8 @@ public class GenderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v2) {
                 startActivity(new Intent(GenderActivity.this, FemaleGender.class));
+                MediaPlayer schwifty = MediaPlayer.create(GenderActivity.this, R.raw.button);
+                schwifty.start();
             }
         });
 
@@ -48,6 +53,8 @@ public class GenderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v3) {
                 startActivity(new Intent(GenderActivity.this, UnknownGender.class));
+                MediaPlayer schwifty = MediaPlayer.create(GenderActivity.this, R.raw.button);
+                schwifty.start();
             }
         });
     }
