@@ -50,7 +50,7 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
         gridView.setOnItemClickListener(this);
     }
     private void fillData() {
-        for (int i = 1; i <= 437; i++) {
+        for (int i = 1; i <= 22; i++) {
             startAPICall(i);
         }
     }
@@ -60,29 +60,35 @@ public class AllActivity extends AppCompatActivity implements OnItemClickListene
         String charID = ((TextView) view.findViewById(R.id.item_id)).getText().toString();
         startActivity(new Intent(AllActivity.this, CharacterCalled.class).putExtra("CHAR_ID", charID));
     }
-    private void startAPICall(int id) {
-        try {
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                    Request.Method.GET,
-                    "https://rickandmortyapi.com/api/character/" + id,
-                    null,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(final JSONObject response) {
-                            try {
-                                data.add(new Item(response.getString("name"), response.getString("image"), response.getString("id")));
-                            } catch (JSONException ignored) { }
+void startAPICall(int page) {
+    try {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                "https://rickandmortyapi.com/api/character/?page=" + Integer.toString(page),
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(final JSONObject response) {
+                        try {
+                            JSONArray results = response.getJSONArray("results");
+                            for (int j = 0; j < results.length(); j++) {
+                                data.add(new Item(results.getJSONObject(j).getString("name"),
+                                        results.getJSONObject(j).getString("image"), results.getJSONObject(j).getString("id")));
+                            }
                             setDataAdapter();
+                            Log.d(TAG, response.toString());
+                        } catch (JSONException ignored) {
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(final VolleyError error) {
-                    Log.e(TAG, error.toString());
-                }
-            });
-            requestQueue.add(jsonObjectRequest);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(final VolleyError error) {
+                Log.e(TAG, error.toString());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+}
 }
